@@ -52,17 +52,6 @@ EOF
             }
         }
 
-        stage('Clean Up') {
-            steps {
-                script {
-                    // Stop and remove the container after the build (optional)
-                    sh 'docker stop my-running-node-app || true'
-                    sh 'docker rm my-running-node-app || true'
-                    // Remove the Docker image (optional)
-                    sh 'docker rmi my-node-app || true'
-                }
-            }
-        }
     }
 }
 
