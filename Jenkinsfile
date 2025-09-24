@@ -31,14 +31,14 @@ pipeline {
                     def dockerfileContent = """
 FROM node:lts-slim
 
-EXPOSE 3000
 WORKDIR /home/node/app
-RUN <<EOF
-npm install
-EOF
 
-COPY . /home/node/app
+COPY package*.json ./
+RUN npm install
 
+COPY . .
+
+EXPOSE 3000
 CMD ["npm", "start"]
 """
                     writeFile file: 'Dockerfile', text: dockerfileContent
